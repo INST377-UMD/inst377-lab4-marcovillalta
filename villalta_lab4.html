@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <link rel="stylesheet" href="villalta_lab4_style.css">
+    </head>
+
+    <body>
+        <!-- Main Content Container -->
+        <div class="sections-container">
+            <h1 id="mainHeading">INST377 - Lab 4</h1>
+
+            <!-- Alert Me Section -->
+            <div class="section-box"> 
+                <form name="contentForm" onsubmit="return(displayName())">
+                    <label for="Name">Name: </label>
+                    <input type="text" id="Name" required>
+                    <input type="submit" value="Alert Me!">
+                </form>
+            </div>
+
+            <!-- Change Color Section -->
+            <div class="section-box"> 
+                <button onclick="changeColor()">Change Color</button>
+            </div>
+
+            <!-- Text Tester Section -->
+            <div class="section-box"> 
+                <form name="textForm">
+                    <label for="textTester">Text Tester </label>
+                    <input type="text" id="textTester" required>
+                    <button onclick="return(validateText())">Validate Text</button>
+                </form>
+            </div>
+
+            <!-- Add Text Section -->
+            <div class="section-box"> 
+                <button onclick="addText()">Add Text</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function displayName() {
+                const userName = document.getElementById("Name").value;
+                if(userName == ""){
+                    return false;
+                } else{
+                    alert("Hi " + userName)
+                    return true
+                }
+            }
+
+            function changeColor(){
+                if (document.body.style.backgroundColor == 'green'){
+                    document.body.style.backgroundColor = 'cadetblue'
+                } else{
+                    document.body.style.backgroundColor ='green'
+                }
+            }
+
+            function validateText(){
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if(validation.test(document.textForm.textTester.value)){
+                    alert('Please do not include any special characters!')
+                    return false
+                }
+            }
+
+            function addText(){
+                const heading = document.getElementById('mainHeading')
+                heading.textContent = "INST377 - Lab 4 - Adding Text"
+            }
+        </script>
+    </body>
+</html>
